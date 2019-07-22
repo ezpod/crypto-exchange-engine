@@ -2,6 +2,14 @@
 
 加密资产交易撮合引擎的POC实现代码。
 
+交易撮合引擎（Matching/Trading Engine），顾名思义是用来撮合交易的软件，广泛地应用在
+金融、证券、加密货币交易等领域。交易引擎负责管理加密资产市场中所有的开口订单（Open Orders），
+并在发现匹配的订单对（Trading Pair）时自动执行交易。本文将首先介绍有关加密资产交易撮合
+引擎的基本概念，例如委托单、交易委托账本等，然后使用Golang实现一个原理性的撮合引擎。如果你正在
+考虑实现类似交易所（Exchange）这样的产品，相信本文会对你有很大的帮助。
+
+完整说明：[交易撮合引擎原理与实现](http://blog.hubwiz.com/2019/07/22/build-a-crypto-exchange/)
+
 ![](http://blog.hubwiz.com/images/cta-1.png)
 
 如果你想学习区块链并在Blockchain Technologies建立职业生涯，那么请查看我们分享的一些以太坊、比特币、EOS、Fabric等区块链相关的交互式在线编程实战教程：
