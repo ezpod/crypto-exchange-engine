@@ -2,7 +2,7 @@
 
 加密资产交易撮合引擎的POC实现代码。
 
-![hubwiz blockchain courses](http://blog.hubwiz.com/images/cta-1.png)
+![](http://blog.hubwiz.com/images/cta-1.png)
 
 如果你想学习区块链并在Blockchain Technologies建立职业生涯，那么请查看我们分享的一些以太坊、比特币、EOS、Fabric等区块链相关的交互式在线编程实战教程：
 
