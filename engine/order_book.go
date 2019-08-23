@@ -1,5 +1,21 @@
 package engine
 
+import "sort"
+
+func (a XDOrders) Len() int   { return len(a) }
+func (a XDOrders) Swap(i, j int)  { a[i], a[j] = a[j], a[i] }
+// Ranking from small to large
+func (a XDOrders) Less(i, j int) bool { return a[i].Price < a[j].Price }
+
+func (a DXOrders) Len() int   { return len(a) }
+func (a DXOrders) Swap(i, j int)  { a[i], a[j] = a[j], a[i] }
+// Ranking from large to small
+func (a DXOrders) Less(i, j int) bool { return a[i].Price > a[j].Price }
+
+
+type  XDOrders []Order
+type  DXOrders []Order
+
 // OrderBook type
 type OrderBook struct {
 	BuyOrders  []Order
@@ -8,38 +24,15 @@ type OrderBook struct {
 
 // Add a buy order to the order book
 func (book *OrderBook) addBuyOrder(order Order) {
-	n := len(book.BuyOrders)
-	var i int
-	for i := n - 1; i >= 0; i-- {
-		buyOrder := book.BuyOrders[i]
-		if buyOrder.Price < order.Price {
-			break
-		}
-	}
-	if i == n-1 {
-		book.BuyOrders = append(book.BuyOrders, order)
-	} else {
-		copy(book.BuyOrders[i+1:], book.BuyOrders[i:])
-		book.BuyOrders[i] = order
-	}
+	book.BuyOrders = append(book.BuyOrders, order)
+	sort.Sort(XDOrders(book.BuyOrders))
 }
 
 // Add a sell order to the order book
 func (book *OrderBook) addSellOrder(order Order) {
-	n := len(book.SellOrders)
-	var i int
-	for i := n - 1; i >= 0; i-- {
-		sellOrder := book.SellOrders[i]
-		if sellOrder.Price > order.Price {
-			break
-		}
-	}
-	if i == n-1 {
-		book.SellOrders = append(book.SellOrders, order)
-	} else {
-		copy(book.SellOrders[i+1:], book.SellOrders[i:])
-		book.SellOrders[i] = order
-	}
+	book.SellOrders = append(book.SellOrders, order)
+	sort.Sort(DXOrders(book.SellOrders))
+
 }
 
 // Remove a buy order from the order book at a given index

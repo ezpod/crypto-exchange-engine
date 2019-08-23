@@ -13,7 +13,7 @@ func (book *OrderBook) processLimitBuy(order Order) []Trade {
 	trades := make([]Trade, 0, 1)
 	n := len(book.SellOrders)
 	// check if we have at least one matching order
-	if n != 0 || book.SellOrders[n-1].Price <= order.Price {
+	if n != 0 && book.SellOrders[n-1].Price <= order.Price {
 		// traverse all orders that match
 		for i := n - 1; i >= 0; i-- {
 			sellOrder := book.SellOrders[i]
@@ -48,7 +48,7 @@ func (book *OrderBook) processLimitSell(order Order) []Trade {
 	trades := make([]Trade, 0, 1)
 	n := len(book.BuyOrders)
 	// check if we have at least one matching order
-	if n != 0 || book.BuyOrders[n-1].Price >= order.Price {
+	if n != 0 && book.BuyOrders[n-1].Price >= order.Price {
 		// traverse all orders that match
 		for i := n - 1; i >= 0; i-- {
 			buyOrder := book.BuyOrders[i]
